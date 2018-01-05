@@ -8,7 +8,7 @@ import (
 	"voting-system-api/tool/rand"
 )
 
-var portCode = flag.String("p", "8080", "web服务监听的端口")
+var portCode = flag.String("port", "8088", "web服务监听的端口")
 
 func main() {
 	// text := "zjlian"
@@ -18,6 +18,7 @@ func main() {
 	// for i := 0; i < l; i++ {
 	// 	fmt.Println(rand.GetRS64())
 	// }
+	flag.Parse()
 	var portStr = ":" + (*portCode)
 	fmt.Println("Server running on localhost" + portStr)
 
