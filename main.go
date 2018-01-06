@@ -20,7 +20,7 @@ func main() {
 	// }
 	flag.Parse()
 	var portStr = ":" + (*portCode)
-	fmt.Println("Server running on localhost" + portStr)
+	// fmt.Println("Server running on localhost" + portStr)
 
 	http.HandleFunc("/", greet)
 	http.HandleFunc("/randstr", randstrHandler)
@@ -47,12 +47,12 @@ func logConnInfo(r *http.Request) {
 }
 
 func greet(w http.ResponseWriter, r *http.Request) {
-	logConnInfo(r)
+	//logConnInfo(r)
 	fmt.Fprintln(w, "Golang server is running")
 }
 
 func randstrHandler(w http.ResponseWriter, r *http.Request) {
-	logConnInfo(r)
+	//logConnInfo(r)
 	var printStr string
 	for i := 0; i < 10; i++ {
 		printStr += rand.GetRS32() + "\n"
@@ -61,6 +61,6 @@ func randstrHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func ipHandler(w http.ResponseWriter, r *http.Request) {
-	logConnInfo(r)
+	//logConnInfo(r)
 	fmt.Fprintf(w, "你的IP是: %v", getRequestIP(r))
 }
