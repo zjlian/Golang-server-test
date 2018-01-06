@@ -8,7 +8,7 @@ import (
 	"voting-system-api/tool/rand"
 )
 
-var portCode = flag.String("port", "80", "web服务监听的端口")
+var portCode = flag.String("p", "80", "web服务监听的端口")
 
 func main() {
 	// text := "zjlian"
