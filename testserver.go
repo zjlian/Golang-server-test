@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net"
 	"net/http"
+	"time"
 	"voting-system-api/tool/rand"
 )
 
@@ -53,11 +54,16 @@ func greet(w http.ResponseWriter, r *http.Request) {
 
 func randstrHandler(w http.ResponseWriter, r *http.Request) {
 	//logConnInfo(r)
-	var printStr string
-	for i := 0; i < 10; i++ {
-		printStr += rand.GetRS32() + "\n"
+	const n = 4096
+
+	tt := time.Now()
+	set := make(map[string]int)
+	for i := 0; i < n; i++ {
+		set[rand.GetRS32()]++
 	}
-	fmt.Fprintf(w, printStr)
+	rt := time.Since(tt)
+	fmt.Fprintf(w, "预计生成 %d 个字符， 实际生成 %d 个字符\n耗时 %v",
+		n, len(set), rt)
 }
 
 func ipHandler(w http.ResponseWriter, r *http.Request) {
