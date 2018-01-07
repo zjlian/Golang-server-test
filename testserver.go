@@ -46,7 +46,7 @@ func greet(w http.ResponseWriter, r *http.Request) {
 
 func randstrHandler(w http.ResponseWriter, r *http.Request) {
 	//logConnInfo(r)
-	const n = 8192
+	const n = 16384
 
 	tt := time.Now()
 	set := make(map[string]int)
