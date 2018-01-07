@@ -12,16 +12,8 @@ import (
 var portCode = flag.String("p", "80", "web服务监听的端口")
 
 func main() {
-	// text := "zjlian"
-	// fmt.Println(rand.MD5(text))
-	// var l int
-	// fmt.Scanf("%d", &l)
-	// for i := 0; i < l; i++ {
-	// 	fmt.Println(rand.GetRS64())
-	// }
 	flag.Parse()
 	var portStr = ":" + (*portCode)
-	// fmt.Println("Server running on localhost" + portStr)
 
 	http.HandleFunc("/", greet)
 	http.HandleFunc("/randstr", randstrHandler)
@@ -54,7 +46,7 @@ func greet(w http.ResponseWriter, r *http.Request) {
 
 func randstrHandler(w http.ResponseWriter, r *http.Request) {
 	//logConnInfo(r)
-	const n = 4096
+	const n = 8192
 
 	tt := time.Now()
 	set := make(map[string]int)
