@@ -51,9 +51,7 @@ func randstrHandler(w http.ResponseWriter, r *http.Request) {
 	tt := time.Now()
 	set := make(map[string]int)
 	for i := 0; i < n; i++ {
-		go func() {
-			set[rand.GetRS32()]++
-		}()
+		set[rand.GetRS32()]++
 	}
 	rt := time.Since(tt)
 	fmt.Fprintf(w, "预计生成 %d 个字符， 实际生成 %d 个字符\n耗时 %v",
